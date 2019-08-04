@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="个人网站,博客 category  category ">
+  <meta name="keyword" content>
+  <title>
+    
+    vue组件通信总结 | 松山大学士
+    
+  </title>
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="justify-content-between fixed-top page-header">
+  <span class="title">松山大学士</span>
+  <ul class="nav">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/programming">编程</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/photos">摄影</a>
+      </li>
+    
+  </ul>
+  <div class="dropdown-container">
+    <span class="btn-dropmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </span>
+    <div class="dropdown-menu dropdown-menu-right">
+      
+        <a class="dropdown-item" href="/">主页</a>
+      
+        <a class="dropdown-item" href="/programming">编程</a>
+      
+        <a class="dropdown-item" href="/photos">摄影</a>
+      
+    </div>
+  </div>
+</header>
+
+  <main class="page-container">
+    <article class="card article article-post">
+  <div class="card-body">
+    <h2 class="card-title">vue组件通信总结</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:16:43 | 暂无评论</h3>
+    
+      <div class="card-text"><h1 id="props-emit"><a href="#props-emit" class="headerlink" title="props/$emit"></a>props/$emit</h1><blockquote>
+<p>适合父子组件通信</p>
+<p>父组件使用 props 传递数据到子组件</p>
+<p>子组件使用 $emit 触发绑定到自身的事件调用父组件中的回调函数将数据传入</p>
+</blockquote>
+<h1 id="provide-inject"><a href="#provide-inject" class="headerlink" title="provide/inject"></a>provide/inject</h1><blockquote>
+<p>适合跨级组件向下传递数据</p>
+<p>祖先组件将需要传递的数据放入自身 provide 选项中</p>
+</blockquote>
+<blockquote>
+<p>子孙组件使用 inject 选项接收从祖先组件传入的数据</p>
+</blockquote>
+<h1 id="attrs-listeners"><a href="#attrs-listeners" class="headerlink" title="$attrs/$listeners"></a>$attrs/$listeners</h1><blockquote>
+<p>适合跨级组件通信</p>
+<p>祖先组件将需要传递的数据通过 v-bind 传入中间组件、通过v-on将事件传入中间组件</p>
+</blockquote>
+<blockquote>
+<p>中间组件使用 v-bind=”$attrs” 将数据层层往下传递数据、使用 v-on=”$listeners” 将事件层层往下传递</p>
+</blockquote>
+<blockquote>
+<p>子孙组件使用直接从props中接收祖先组件的数据、使用 this.$emit 触发祖先组件上的事件</p>
+</blockquote>
+<blockquote>
+<p>注意：$attrs 包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。默认情况下父作用域的不被认作 props 的特性绑定 (attribute bindings) 将会“回退”且作为普通的 HTML 特性应用在子组件的根元素上,因此通过设置 inheritAttrs=false，将这些默认行为去掉。</p>
+</blockquote>
+<blockquote>
+<p>注意：$listeners 包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。</p>
+</blockquote>
+<h1 id="on-emit"><a href="#on-emit" class="headerlink" title="$on/$emit"></a>$on/$emit</h1><blockquote>
+<p>适合父子组件、跨级组件、兄弟组件等所有情况的组件通信</p>
+</blockquote>
+<blockquote>
+<p>通过创建一个新的Vue实例，并使用 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 在需要监听某事件的地方调用 ```this.$bus.$on(&apos;someEvent&apos;,callback)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>在需要触发某事件的地方调用 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># vuex</span><br><span class="line">&gt; 适合父子组件、跨级组件、兄弟组件等所有情况的组件通信</span><br><span class="line"></span><br><span class="line">&gt; 通过vuex插件引入$store及相关map方法（如mapState、mapGetters）</span><br><span class="line"></span><br><span class="line">&gt; 在需要改变数据的地方调用 ```this.$store.commit(&apos;mutation&apos;,params)、this.$store.dispatch(&apos;action&apos;,params)、mapMutations()、mapActions()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>在需要使用数据的地方调用 <code>mapState()、mapGetters()</code></p>
+</blockquote>
+</div>
+    
+  </div>
+</article>
+  </main>
+
+  <footer class="page-footer">
+  <p class="info-box">
+    © 2018-2019 松山大学士
+    <a target="_blank" class="link" href="/atom.xml"><i class="fas fa-rss-square"></i></a>
+  </p>
+  <p class="info-box">
+    Powered By <a target="_blank" class="link" href="https://hexo.io/">Hexo</a>
+    <span class="divider">|</span>
+    Theme - <a target="_blank" class="link" href="https://github.com/gwtjs">gwtjs</a>
+  </p>
+  <p class="info-box">
+    <span id="busuanzi_container_site_pv">
+            总访问量 <span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="divider">|</span>
+    <span id="busuanzi_container_site_uv">
+            访客数 <span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="divider">|</span>
+    网站地图
+  </p>
+</footer>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

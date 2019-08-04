@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="个人网站,博客 category  category ">
+  <meta name="keyword" content>
+  <title>
+    
+    bind、call、apply | 松山大学士
+    
+  </title>
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="justify-content-between fixed-top page-header">
+  <span class="title">松山大学士</span>
+  <ul class="nav">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/programming">编程</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/photos">摄影</a>
+      </li>
+    
+  </ul>
+  <div class="dropdown-container">
+    <span class="btn-dropmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </span>
+    <div class="dropdown-menu dropdown-menu-right">
+      
+        <a class="dropdown-item" href="/">主页</a>
+      
+        <a class="dropdown-item" href="/programming">编程</a>
+      
+        <a class="dropdown-item" href="/photos">摄影</a>
+      
+    </div>
+  </div>
+</header>
+
+  <main class="page-container">
+    <article class="card article article-post">
+  <div class="card-body">
+    <h2 class="card-title">bind、call、apply</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"><h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>bind()方法创建一个新的函数，在调用时设置this关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。返回一个原函数的拷贝，并拥有指定的this值和初始参数。</p>
+<p>apply() 方法调用一个具有给定this值的函数，以及作为一个数组（或类似数组对象）提供的参数。返回调用有指定this值和参数的函数的结果。</p>
+<p>call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。使用调用者提供的this值和参数调用该函数的返回值。若该方法没有返回值，则返回undefined。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>bind()方法</p>
+<p>bind()方法的简单实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = function(target, ...otherArgs) &#123;</span><br><span class="line">    const thisFun = this;</span><br><span class="line">    return function(...args) &#123;</span><br><span class="line">        return thisFun.call(target, ...otherArgs, ...args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const a = &#123;name: &apos;a&apos;&#125;;</span><br><span class="line">let b = function(...args)&#123;return [this.name,...args]&#125;;</span><br><span class="line">b = b.myBind(a,1,2);</span><br><span class="line">b(); // 返回 [&quot;a&quot;, 1, 2]</span><br><span class="line">b(3,4); // 返回 [&quot;a&quot;, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<p>call()、apply()方法在调用者函数运行时改变调用者的this指向第一个参数。如果这个函数处于non-strict mode，且传入的第一个参数为null和undefined，则this值会自动指向全局对象(浏览器中就是window对象)；如果第一个参数为原始值(数字，字符串，布尔值)，this会指向该原始值的自动包装对象。</p>
+<h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1></div>
+    
+  </div>
+</article>
+  </main>
+
+  <footer class="page-footer">
+  <p class="info-box">
+    © 2018-2019 松山大学士
+    <a target="_blank" class="link" href="/atom.xml"><i class="fas fa-rss-square"></i></a>
+  </p>
+  <p class="info-box">
+    Powered By <a target="_blank" class="link" href="https://hexo.io/">Hexo</a>
+    <span class="divider">|</span>
+    Theme - <a target="_blank" class="link" href="https://github.com/gwtjs">gwtjs</a>
+  </p>
+  <p class="info-box">
+    <span id="busuanzi_container_site_pv">
+            总访问量 <span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="divider">|</span>
+    <span id="busuanzi_container_site_uv">
+            访客数 <span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="divider">|</span>
+    网站地图
+  </p>
+</footer>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

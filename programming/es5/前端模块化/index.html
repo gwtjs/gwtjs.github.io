@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="个人网站,博客 category  category ">
+  <meta name="keyword" content>
+  <title>
+    
+    前端模块化 | 松山大学士
+    
+  </title>
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="justify-content-between fixed-top page-header">
+  <span class="title">松山大学士</span>
+  <ul class="nav">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/programming">编程</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/photos">摄影</a>
+      </li>
+    
+  </ul>
+  <div class="dropdown-container">
+    <span class="btn-dropmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </span>
+    <div class="dropdown-menu dropdown-menu-right">
+      
+        <a class="dropdown-item" href="/">主页</a>
+      
+        <a class="dropdown-item" href="/programming">编程</a>
+      
+        <a class="dropdown-item" href="/photos">摄影</a>
+      
+    </div>
+  </div>
+</header>
+
+  <main class="page-container">
+    <article class="card article article-post">
+  <div class="card-body">
+    <h2 class="card-title">前端模块化</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"><h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>前端模块化的发展主要经历了以下四个阶段：</p>
+<ol>
+<li><p>原始实现阶段：使用函数/对象，一个函数或一个对象表示一个模块。函数方式存在全局命名空间污染问题，对象方式存在所有模块成员都对外暴露的问题；</p>
+</li>
+<li><p>闭包实现阶段：使用立即执行函数，返回一个模块。这种方式存在模块管理混乱的问题，比如A模块依赖B模块，则加载B模块的script标签就必须放在A模块的script的标签之前，当应用引入较多模块是，手动维护依赖不利于管理；</p>
+</li>
+<li><p>commonjs、amd、cmd规范阶段：nodejs的模块机制实现了commonjs规范，requirejs实现了amd规范，seajs实现了cmd规范。commonjs由于需要同步加载的原因无法用于浏览器端，amd、cmd的主要区别在于模块的加载时机不同。</p>
+</li>
+<li><p>es6的module规范阶段：es6原生提供了模块机制。</p>
+</li>
+</ol>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="commonjs规范："><a href="#commonjs规范：" class="headerlink" title="commonjs规范："></a>commonjs规范：</h2><h2 id="amd规范：官方介绍"><a href="#amd规范：官方介绍" class="headerlink" title="amd规范：官方介绍"></a>amd规范：<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">官方介绍</a></h2><ol>
+<li><p>define()函数，用于定义模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(id?, dependencies?, factory);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>define.amd属性，用于标识模块遵循amd规范</p>
+</li>
+<li><p>一个amd规范的简单伪代码实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>cmd规范：</p>
+<h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1></div>
+    
+  </div>
+</article>
+  </main>
+
+  <footer class="page-footer">
+  <p class="info-box">
+    © 2018-2019 松山大学士
+    <a target="_blank" class="link" href="/atom.xml"><i class="fas fa-rss-square"></i></a>
+  </p>
+  <p class="info-box">
+    Powered By <a target="_blank" class="link" href="https://hexo.io/">Hexo</a>
+    <span class="divider">|</span>
+    Theme - <a target="_blank" class="link" href="https://github.com/gwtjs">gwtjs</a>
+  </p>
+  <p class="info-box">
+    <span id="busuanzi_container_site_pv">
+            总访问量 <span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="divider">|</span>
+    <span id="busuanzi_container_site_uv">
+            访客数 <span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="divider">|</span>
+    网站地图
+  </p>
+</footer>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

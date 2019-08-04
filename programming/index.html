@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="个人网站,博客">
+  <meta name="keyword" content>
+  <title>
+    
+    编程 | 松山大学士
+    
+  </title>
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="justify-content-between fixed-top page-header">
+  <span class="title">松山大学士</span>
+  <ul class="nav">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/programming">编程</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/photos">摄影</a>
+      </li>
+    
+  </ul>
+  <div class="dropdown-container">
+    <span class="btn-dropmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </span>
+    <div class="dropdown-menu dropdown-menu-right">
+      
+        <a class="dropdown-item" href="/">主页</a>
+      
+        <a class="dropdown-item" href="/programming">编程</a>
+      
+        <a class="dropdown-item" href="/photos">摄影</a>
+      
+    </div>
+  </div>
+</header>
+
+  <main class="page-container">
+    
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">指令&插槽</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:16:43 | 暂无评论</h3>
+    
+      <div class="card-text">自定义指令的实现全局注册 &amp; 局部注册
+除了核心功能默认内置的指令 (v-model 和 v-show)，Vue 也允许注册自定义指令。
+注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。
+
+/ ...</div>
+      <a target="_blank" href="/programming/vue/指令&插槽/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">vue组件通信总结</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:16:43 | 暂无评论</h3>
+    
+      <div class="card-text">props/$emit
+适合父子组件通信
+父组件使用 props 传递数据到子组件
+子组件使用 $emit 触发绑定到自身的事件调用父组件中的回调函数将数据传入
+
+provide/inject
+适合跨级组件向下传递数据
+祖先组件将需要传递的数据放入自身 provide 选项中
+
+
+子孙组件使用 in ...</div>
+      <a target="_blank" href="/programming/vue/vue组件通信总结/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">Promise</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text">描述原理1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162function Promise(cb)&#123;    t ...</div>
+      <a target="_blank" href="/programming/es6/Promise/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">async、await</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text">描述1async function name([param[, param[, ... param]]]) &#123; statements &#125;
+
+async function 声明用于定义一个返回 AsyncFunction 对象的异步函数。异步函数是指通过事件循环异步执行的函数，它会 ...</div>
+      <a target="_blank" href="/programming/es6/async、await/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">类和继承</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text">类类定义主要有以下几种方式：
+
+工厂方式，存在语义上不像创建类实例（未使用new构造函数），每个实例都创建了方法的问题。
+123456createA(name) &#123;    var a = new Object;    a.name = name;    a.getName = functi ...</div>
+      <a target="_blank" href="/programming/es5/类和继承/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">原型、原型链、instanceof</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text">描述prototype属性指向原型对象，proto属性指向构造函数的原型。
+对象的原型链是对象的构造函数的原型一直到Object.prototype.proto组成的，因此通常我们说的某某对象的原型是指构造函数的原型(即proto属性)，而不是对象的原型对象(即prototype属性)
+函数是特殊的 ...</div>
+      <a target="_blank" href="/programming/es5/原型、原型链、instanceof/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">前端模块化</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text">描述前端模块化的发展主要经历了以下四个阶段：
+
+原始实现阶段：使用函数/对象，一个函数或一个对象表示一个模块。函数方式存在全局命名空间污染问题，对象方式存在所有模块成员都对外暴露的问题；
+
+闭包实现阶段：使用立即执行函数，返回一个模块。这种方式存在模块管理混乱的问题，比如A模块依赖B模块，则加载B模 ...</div>
+      <a target="_blank" href="/programming/es5/前端模块化/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">bind、call、apply</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text">描述bind()方法创建一个新的函数，在调用时设置this关键字为提供的值。并在调用新函数时，将给定参数列表作为原函数的参数序列的前若干项。返回一个原函数的拷贝，并拥有指定的this值和初始参数。
+apply() 方法调用一个具有给定this值的函数，以及作为一个数组（或类似数组对象）提供的参数。返 ...</div>
+      <a target="_blank" href="/programming/es5/bind、call、apply/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">登录方案</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"> ...</div>
+      <a target="_blank" href="/programming/项目记录/博客后台/登录方案/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">菜单权限控制方案</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"> ...</div>
+      <a target="_blank" href="/programming/项目记录/博客后台/菜单权限控制方案/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">element-ui按需引入</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"> ...</div>
+      <a target="_blank" href="/programming/项目记录/博客后台/element-ui按需引入/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">xss、csrf防御</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"> ...</div>
+      <a target="_blank" href="/programming/项目记录/博客后台/xss、csrf防御/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+  <article class="card article ">
+  <div class="card-body">
+    <h2 class="card-title">基于axios的请求封装、错误处理及错误收集</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"> ...</div>
+      <a target="_blank" href="/programming/项目记录/博客后台/基于axios的请求封装、错误处理及错误收集/" class="card-link">阅读全文</a>
+    
+  </div>
+</article>
+
+
+  </main>
+
+  <footer class="page-footer">
+  <p class="info-box">
+    © 2018-2019 松山大学士
+    <a target="_blank" class="link" href="/atom.xml"><i class="fas fa-rss-square"></i></a>
+  </p>
+  <p class="info-box">
+    Powered By <a target="_blank" class="link" href="https://hexo.io/">Hexo</a>
+    <span class="divider">|</span>
+    Theme - <a target="_blank" class="link" href="https://github.com/gwtjs">gwtjs</a>
+  </p>
+  <p class="info-box">
+    <span id="busuanzi_container_site_pv">
+            总访问量 <span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="divider">|</span>
+    <span id="busuanzi_container_site_uv">
+            访客数 <span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="divider">|</span>
+    网站地图
+  </p>
+</footer>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="个人网站,博客 category  category ">
+  <meta name="keyword" content>
+  <title>
+    
+    类和继承 | 松山大学士
+    
+  </title>
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="justify-content-between fixed-top page-header">
+  <span class="title">松山大学士</span>
+  <ul class="nav">
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/programming">编程</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-link" href="/photos">摄影</a>
+      </li>
+    
+  </ul>
+  <div class="dropdown-container">
+    <span class="btn-dropmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </span>
+    <div class="dropdown-menu dropdown-menu-right">
+      
+        <a class="dropdown-item" href="/">主页</a>
+      
+        <a class="dropdown-item" href="/programming">编程</a>
+      
+        <a class="dropdown-item" href="/photos">摄影</a>
+      
+    </div>
+  </div>
+</header>
+
+  <main class="page-container">
+    <article class="card article article-post">
+  <div class="card-body">
+    <h2 class="card-title">类和继承</h2>
+    <h3 class="card-subtitle mb-2 text-muted">发布于2019-08-01 00:15:51 | 暂无评论</h3>
+    
+      <div class="card-text"><h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>类定义主要有以下几种方式：</p>
+<ol>
+<li><p>工厂方式，存在语义上不像创建类实例（未使用new构造函数），每个实例都创建了方法的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">createA(name) &#123;</span><br><span class="line">    var a = new Object;</span><br><span class="line">    a.name = name;</span><br><span class="line">    a.getName = function()&#123;&#125;;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数方式，存在每个实例都创建了方法的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function A(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.getName = function()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原型方式，存在无法向构造函数传参，每个实例属性都一样的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function A()&#123;</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.name = &apos;a&apos;;</span><br><span class="line">A.prototype.getName = function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数及原型混合方式，较为完美，但方法定义在构造函数外部。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function A(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getName = function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态原型方式，基本与混合方式一致，区别在于将方法定义在构造函数内。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function A(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    if(!A._inited) &#123;</span><br><span class="line">        A.prototype.getName = function()&#123;&#125;</span><br><span class="line">        A._inited = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>class方式,只是es6语法糖，内部基本与构造函数/原型缓和方式一致，constructor对应构造函数,static成员添加到构造函数，其余成员添加到构造函数的原型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">    static a = 5</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    static getValue()&#123;&#125;</span><br><span class="line">    getName()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 等同于</span><br><span class="line">function A(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">A.a = 5;</span><br><span class="line">A.getValue = function()&#123;&#125;</span><br><span class="line">A.prototy.getName = funciton()&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>javascript继承只能是单继承，可使用拷贝方式实现多继承效果。</p>
+<ol>
+<li><p>混合方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function Super(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.getName = function()&#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line">function Sub(name, value) &#123;</span><br><span class="line">    Super.call(this,name);</span><br><span class="line">    this.value = value;</span><br><span class="line">&#125;</span><br><span class="line">// 此处不直接Sub.prototype = new Super()是因为这样的话Super的属性会附加在Sub.prototype上</span><br><span class="line">function F()&#123;&#125;</span><br><span class="line">F.prototype = Super.prototype;</span><br><span class="line">Sub.prototype = new F()</span><br><span class="line">Sub.prototype.constructor = Sub;</span><br><span class="line">Sub.prototype.getValue = function()&#123;</span><br><span class="line">    return value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>object.create方式<br>基本与混合方式一致，区别在于无需使用中间的构造函数F，而是使用Object.create()：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function F()&#123;&#125;</span><br><span class="line">F.prototype = Super.prototype;</span><br><span class="line">Sub.prototype = new F()</span><br><span class="line">// 以上代码替换为</span><br><span class="line">Sub.prototype = Object.create(Super.prototype)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Sub.prototype = Object.assign(&#123;&#125;,Super.prototype,A.prototype,B.prototype,&#123;</span><br><span class="line">    constructor:Sub,</span><br><span class="line">    otherProp: &apos;&apos;,</span><br><span class="line">    otherFunction: function()&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>class extends方式，只是es6语法糖，内部实现基本与object.create方式一致,super相当于A.call(this)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class B extend A&#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line">     super()   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</div>
+    
+  </div>
+</article>
+  </main>
+
+  <footer class="page-footer">
+  <p class="info-box">
+    © 2018-2019 松山大学士
+    <a target="_blank" class="link" href="/atom.xml"><i class="fas fa-rss-square"></i></a>
+  </p>
+  <p class="info-box">
+    Powered By <a target="_blank" class="link" href="https://hexo.io/">Hexo</a>
+    <span class="divider">|</span>
+    Theme - <a target="_blank" class="link" href="https://github.com/gwtjs">gwtjs</a>
+  </p>
+  <p class="info-box">
+    <span id="busuanzi_container_site_pv">
+            总访问量 <span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="divider">|</span>
+    <span id="busuanzi_container_site_uv">
+            访客数 <span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="divider">|</span>
+    网站地图
+  </p>
+</footer>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
